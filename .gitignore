@@ -1,0 +1,13 @@
+# working environment
+.idea
+tilewall.ts.iml
+
+# npm
+node_modules
+
+# gulp
+
+# generated sources
+demo/assets/*.js
+demo/assets/*.css
+demo/definitions
