@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tilewall.js Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/demo.css">
 </head>
 <body>
 <h1>Tilewall.js Demo</h1>
@@ -324,6 +326,12 @@
         </div>
     </article>
 </div>
-<script type="text/javascript" src="assets/demo.js"></script>
+
+<script src="/node_modules/systemjs/dist/system.js"></script>
+<script>
+    System
+        .import('/demo/assets/demo.js')
+        .then(null, console.error.bind(console));
+</script>
 </body>
 </html>

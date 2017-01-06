@@ -12,3 +12,6 @@ demo/assets/*.js
 tilewall.js
 demo/assets/*.css
 demo/definitions
+*.d.ts
+*.js.map
+npm-debug.log

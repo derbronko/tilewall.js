@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "listFiles": true,
+    "diagnostics": false,
+    "isolatedModules": false,
+    "target": "es5",
+    "module": "es5",
+    "moduleResolution": "classic",
+    "rootDir": "",
+    "outDir": "",
+    "allowSyntheticDefaultImports": true,
+    "charset": "UTF-8",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true
+  },
+  "files": [
+    "demo/assets/demo.ts",
+    "tilewall.ts"
+  ]
+}
+

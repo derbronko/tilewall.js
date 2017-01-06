@@ -4,7 +4,11 @@
   "description": "A small plugin in TypeScript to organize tiles in different sizes on a wall",
   "main": "tilewall.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install dependencies": "npm install --force",
+    "run tests": "echo \"Error: no test specified\" && exit 1",
+    "start server": "lite-server",
+    "compile scss": "gulp scss",
+    "watch scss": "gulp 'watch scss'"
   },
   "repository": {
     "type": "git",
@@ -23,11 +27,32 @@
   },
   "homepage": "https://github.com/derbronko/tilewall.ts#readme",
   "devDependencies": {
-    "compass": "^0.1.1",
+    "del": "^2.2.2",
     "grunt": "^1.0.1",
-    "grunt-compass": "^0.3.9",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-debug": "^3.0.0",
+    "gulp-include": "^2.3.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-scss": "^1.4.0",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-typescript": "^3.1.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-wrapper": "^1.0.0",
     "jquery": "^3.1.1",
-    "lodash": "^4.17.2",
+    "jshint": "^2.9.4",
+    "lite-server": "^2.2.2",
+    "lodash": "^4.17.4",
+    "systemjs": "^0.19.41",
     "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "lite-server": "^2.2.2",
+    "systemjs": "^0.19.41"
   }
 }
