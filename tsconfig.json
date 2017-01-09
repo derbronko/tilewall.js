@@ -21,7 +21,11 @@
   },
   "files": [
     "demo/assets/demo.ts",
-    "tilewall.ts"
+    "tilewall.ts",
+    "tilewall.contracts.ts"
+  ],
+  "exclude": [
+
   ]
 }
 

@@ -4,7 +4,7 @@
   "description": "A small plugin in TypeScript to organize tiles in different sizes on a wall",
   "main": "tilewall.ts",
   "scripts": {
-    "install dependencies": "npm install --force",
+    "install dependencies": "npm install --force && typings install",
     "run tests": "echo \"Error: no test specified\" && exit 1",
     "start server": "lite-server",
     "compile scss": "gulp scss",
@@ -49,7 +49,8 @@
     "lite-server": "^2.2.2",
     "lodash": "^4.17.4",
     "systemjs": "^0.19.41",
-    "typescript": "^2.1.4"
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0"
   },
   "dependencies": {
     "lite-server": "^2.2.2",

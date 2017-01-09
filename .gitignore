@@ -15,3 +15,4 @@ demo/definitions
 *.d.ts
 *.js.map
 npm-debug.log
+tilewall.contracts.js

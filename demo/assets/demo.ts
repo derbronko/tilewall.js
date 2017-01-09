@@ -1,12 +1,21 @@
-import Tilewall from "../../tilewall";
+///<reference path="../../typings/index.d.ts"/>
+// import * as Tilewall from "../../tilewall.js";
+import Tilewall from "../../tilewall.js";
+import Contracts from "../../tilewall.contracts.js";
+
 
 const demo = {
     config: {
-        selectorContainer: ".tilesContainer"
+        selectorContainer: ".tilesContainer",
+        classTmpContainer: "tmpTilesContainer",
+        stylesTmpContainer: "display: none;",
+
     },
     init: () => {
-        let tilewall = new Tilewall(
-            demo.config.selectorContainer
+        let dasda = new Tilewall(
+            demo.config
         );
-    }
+    },
 };
+
+let tilewallHolder = demo.init();
