@@ -6,7 +6,7 @@
   "scripts": {
     "install dependencies": "npm install --force && typings install",
     "run tests": "echo \"Error: no test specified\" && exit 1",
-    "start server": "lite-server",
+    "start server": "browser-sync start --config bs-config.js",
     "compile scss": "gulp scss",
     "watch scss": "gulp 'watch scss'"
   },
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/derbronko/tilewall.ts#readme",
   "devDependencies": {
+    "browsersync": "0.0.1-security",
     "del": "^2.2.2",
     "grunt": "^1.0.1",
     "gulp": "^3.9.1",
