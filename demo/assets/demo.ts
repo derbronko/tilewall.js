@@ -12,10 +12,10 @@ const demo = {
 
     },
     init: () => {
-        let dasda = new Tilewall(
+        new Tilewall(
             demo.config
         );
     },
 };
 
-let tilewallHolder = demo.init();
+demo.init();
