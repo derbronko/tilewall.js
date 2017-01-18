@@ -16,7 +16,9 @@ export default class Tilewall {
         elementKeyId: "data-tw-id"
     };
     private matrix: [number][];
-    private tilewallData: any = {};
+    private tilewallData: any = {
+        elements: {}
+    };
     // endregion
 
     constructor(config: {}) {
@@ -26,7 +28,7 @@ export default class Tilewall {
     }
 
     private setup() {
-        // reduce the elementsPerRow to avoid mistakes based on array start counting from 0
+        // reduce the elementsPerRow to avoid mistakes based on arrays start counting from 0
         this.config.elementsPerRow += -1;
 
         this.createTmpContainer();
@@ -46,7 +48,6 @@ export default class Tilewall {
 
     private mapElements(): any {
         let _this = this,
-            map = [],
             iteratee: number = 1,
             element: {} = {};
 
@@ -59,15 +60,16 @@ export default class Tilewall {
                     "width": parseInt($(this).attr(_this.config.elementKeyWidth))
                 }
             };
-            map.push(element);
             console.log(element);
             console.log("start searching for element above");
+            _this.tilewallData.elements[iteratee] = element;
+            console.log(_this.tilewallData.elements[iteratee]);
             _this.findFreeSpaceForElementInMatrix(element);
             console.log("-------------------------------------------");
             iteratee += 1;
+
         });
 
-        this.tilewallData.elements = map;
     }
 
     private findFreeSpaceForElementInMatrix(element: any) {
@@ -140,6 +142,15 @@ export default class Tilewall {
         this.matrix.push(this.generateDefaultMatrixRowArray());
     }
 
+    private generateDefaultMatrixRowArray(): any {
+        let array = [];
+
+        for (let i = 0; i <= this.config.elementsPerRow; i++) {
+            array.push(0);
+        }
+        return array;
+    }
+
     private matrixSaveElement(row: number, slot: number, elementId: number, elementHeight: number, elementWidth: number) {
         console.log(row, slot);
 
@@ -161,28 +172,18 @@ export default class Tilewall {
     }
 
     private elementSaveMatrixPosition(row: number, slot: number, elementId: number) {
-        console.log("elements" + this.tilewallData.elements);
-        let mapPosition = _.find(this.tilewallData.elements, {id: elementId});
+        console.log("elements" + this.tilewallData.elements[elementId]);
+        let element = this.tilewallData.elements[elementId];
 
-        if (_.isEmpty(mapPosition)) {
+        if (_.isEmpty(element)) {
             throw new Error("Element could not be found!");
         } else {
-            console.log("map: ");
-            console.log(mapPosition);
-            mapPosition.position = {
+            element["position"] = {
                 row: row,
                 slot: slot
-            }
+            };
+            console.log(element);
         }
-    }
-
-    private generateDefaultMatrixRowArray(): any {
-        let array = [];
-
-        for (let i = 0; i <= this.config.elementsPerRow; i++) {
-            array.push(0);
-        }
-        return array;
     }
 
     // api to give the data of the wall
