@@ -21,7 +21,7 @@ module.exports = {
     },
     "files": [
         "**/*.html",
-        "**/*.ts",
+        "**/*.js",
         "**/*.css"
     ],
     "watchOptions": {},
