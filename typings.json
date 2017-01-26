@@ -1,0 +1,10 @@
+{
+  "name": "tilewall",
+  "version": false,
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20170104155652"
+  },
+  "dependencies": {
+    "lodash": "registry:dt/lodash#4.14.0+20161228203806"
+  }
+}

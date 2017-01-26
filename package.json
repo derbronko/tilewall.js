@@ -52,9 +52,5 @@
     "systemjs": "^0.19.41",
     "typescript": "^2.1.4",
     "typings": "^2.1.0"
-  },
-  "dependencies": {
-    "lite-server": "^2.2.2",
-    "systemjs": "^0.19.41"
   }
 }

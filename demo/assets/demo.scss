@@ -1,0 +1,48 @@
+.tilesContainer_Detail,
+.tilesContainer {
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    transition: all .25s ease;
+
+    article {
+        padding: 10px;
+        background: lightblue;
+        margin: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.tw-tmp {
+    position: fixed;
+    top: 100000px;
+    left: 100000px;
+    transition: all 1s ease;
+}
+
+.alternative {
+    .content_Container {
+        width: 200%;
+        position: absolute;
+        right: -100%;
+        transition: all 1s ease;
+
+        &.showDetail{
+            right: 0%;
+        }
+
+        .tilesContainer {
+            float: left;
+            width: 50%;
+        }
+
+        .article_detail {
+            float: right;
+            padding: 0 1%;
+            width: 48%;
+        }
+    }
+
+}

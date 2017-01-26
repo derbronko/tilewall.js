@@ -16,3 +16,4 @@ demo/definitions
 *.js.map
 npm-debug.log
 tilewall.contracts.js
+typings/**/*.json

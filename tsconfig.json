@@ -4,7 +4,7 @@
     "diagnostics": false,
     "isolatedModules": false,
     "target": "es5",
-    "module": "es5",
+    "module": "none",
     "moduleResolution": "classic",
     "rootDir": "",
     "outDir": "",
