@@ -18,8 +18,6 @@ const demo = {
 
 let tilewall = demo.init();
 
-console.log(tilewall.getData());
-tilewall.onInitialized(setEvents);
 
 function setEvents() {
     $(demo.config.selectorContainer).children().click(function (event) {
@@ -33,15 +31,18 @@ function getDetailSite(elementData) {
     $.ajax({
         url: "http://localhost:3000/demo/detail_site.html",
         data: ""
-    }).done(function(data) {
+    }).done(function (data) {
         // alert(data);
         $("body").append("<div class='tw-tmp'>" + data + "</div>");
         tilewall.insertCustomElementToSpecificMatrixPosition(elementData.position.row + 1, $(".tw-tmp").children());
     })
 }
 
+if (!$("body").hasClass("alternative")) {
 
-if ($("body").hasClass("alternative")) {
+    tilewall.onInitialized(setEvents);
+
+} else {
     const demo_alternative = {
         config: {
             selectorContainer: ".tilesContainer_Detail",
