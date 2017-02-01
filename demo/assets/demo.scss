@@ -12,6 +12,46 @@
         position: absolute;
         top: 0;
         left: 0;
+
+        &.inner {
+            transition: all 1s ease;
+        }
+
+        &.open {
+            cursor: pointer;
+
+            .inner {
+                -webkit-filter: blur(2px);
+                -moz-filter: blur(2px);
+                -o-filter: blur(2px);
+                -ms-filter: blur(2px);
+                filter: blur(2px);
+            }
+            &:before {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 1%;
+                height: 50%;
+                margin-top: -10%;
+                margin-left: -5%;
+                background: #fff;
+                transform: rotate(45deg);
+            }
+            &:after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 1%;
+                height: 50%;
+                margin-top: -10%;
+                margin-left: -5%;
+                background: #fff;
+                transform: rotate(-45deg);
+            }
+        }
     }
 }
 
@@ -38,7 +78,7 @@
         right: -100%;
         transition: all 1s ease;
 
-        &.showDetail{
+        &.showDetail {
             right: 0%;
         }
 

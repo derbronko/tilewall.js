@@ -3,6 +3,7 @@
 import * as $ from "/node_modules/jquery/dist/jquery.js";
 import * as _ from "/node_modules/lodash/lodash.js";
 import * as Contracts from "tilewall.contracts";
+import at = require("lodash/at");
 
 export default class Tilewall {
     // region private variables
@@ -96,9 +97,9 @@ export default class Tilewall {
             tilewallWidth: number = this.data.dimensions.container.width;
         _.sortBy(this.data.config.responsive, "width");
 
-        _.forEach(this.data.config.responsive, function (value, key) {
-            if (value.width >= tilewallWidth) {
-                elementsPerRow = value.elementsPerRow;
+        _.forEach(this.data.config.responsive, function (dimension) {
+            if (dimension.width >= tilewallWidth) {
+                elementsPerRow = dimension.elementsPerRow;
             }
         });
 
@@ -147,6 +148,8 @@ export default class Tilewall {
     }
 
     private createElementData(id: number, $element: any, height?: number, width?: number, isDetail?: boolean): {} {
+        let horizontalBalance = (this.data.config.heedElementDimensions) ? this.getBoxSizingFactors($element, false) : 0,
+            verticalBalance = (this.data.config.heedElementDimensions) ? this.getBoxSizingFactors($element, false) : 0;
         height = height || parseInt($element.attr(this.data.config.elementKeyHeight));
         width = width || parseInt($element.attr(this.data.config.elementKeyWidth));
         isDetail = isDetail || false;
@@ -160,8 +163,8 @@ export default class Tilewall {
                 "width": width
             },
             "dimension": {
-                width: width * this.data.dimensions.element.unit,
-                height: (isDetail) ? this.getCustomElementMeasurements($element, width) : height * this.data.dimensions.element.unit,
+                width: width * this.data.dimensions.element.unit - horizontalBalance,
+                height: (isDetail) ? this.getCustomElementMeasurements($element, width) : height * this.data.dimensions.element.unit - verticalBalance,
             }
         };
     }
@@ -173,7 +176,7 @@ export default class Tilewall {
             throw new Error("Element could not be found! There is no element with this id!");
         } else {
             $element.css({
-                width: (width * this.data.dimensions.element.unit) + this.getBoxSizingFactors($element, false)
+                width: (width * this.data.dimensions.element.unit)
             });
             return $element.outerHeight() + this.getBoxSizingFactors($element, true);
         }
@@ -268,21 +271,19 @@ export default class Tilewall {
         }
     }
 
-    private matrixNewLine() {
+    private matrixNewLine(atRow?: number) {
+        atRow = atRow || 0;
+
         // initialize the matrix
         if (_.isEmpty(this.data.matrix)) {
             this.data.matrix = [];
         }
-        this.data.matrix.push(this.generateDefaultMatrixRowArray());
-    }
 
-    private matrixNewLineAtSpecificRow(row: number) {
-        // initialize the matrix
-        if (_.isEmpty(this.data.matrix)) {
-            return false;
+        if (atRow === 0) {
+            return this.data.matrix.push(this.generateDefaultMatrixRowArray());
+        } else {
+            return this.data.matrix.splice(atRow, 0, this.generateDefaultMatrixRowArray());
         }
-
-        return this.data.matrix.splice(row, 0, this.generateDefaultMatrixRowArray());
     }
 
     private generateDefaultMatrixRowArray(): any {
@@ -365,14 +366,12 @@ export default class Tilewall {
     // ToDo: change type from $element to jQuery
     private assignStylesToElements($element: any) {
         let elementId = $element.attr(this.data.config.elementKeyId),
-            horizontalBalance = (this.data.config.heedElementDimensions) ? this.getBoxSizingFactors($element, false) : 0,
-            verticalBalance = (this.data.config.heedElementDimensions) ? this.getBoxSizingFactors($element, false) : 0,
             height = _.get(this.data.elements, [elementId, "dimension", "height"]),
             width = _.get(this.data.elements, [elementId, "dimension", "width"]);
 
         $element.css({
-            width: width - horizontalBalance,
-            height: height - verticalBalance
+            width: width,
+            height: height
         });
     }
 
@@ -425,8 +424,6 @@ export default class Tilewall {
             containerWidth = this.data.dimensions.container.width,
             unit = containerWidth / (this.data.dimensions.elementsPerRow),
             left = _.get(this.data.elements, [elementId, "position", "slot"]) * unit;
-        // console.log("elementId: " + elementId);
-        // console.log("elementRow: " + elementRow);
 
         let top = this.getRowDimensionDataFromData(elementRow).positionTop;
 
@@ -459,13 +456,6 @@ export default class Tilewall {
 
 
     // region public methods
-    // api to give the data of the wall
-    // ToDo: is it good to give all data?
-    // ToDo: Change return type
-    public getData(): any {
-        return this.data;
-    }
-
     public onInitialized(callback: () => void) {
         if (this.data.elements) {
             callback();
@@ -480,7 +470,7 @@ export default class Tilewall {
             height = 1,
             width = this.data.dimensions.elementsPerRow;
 
-        if (this.matrixNewLineAtSpecificRow(row)) {
+        if (this.matrixNewLine(row)) {
             this.shiftElementsFromRowToStepRow(row, height);
             this.data.elements[id] = this.createElementData(id, $element, height, width, true);
             this.saveElementPositionToElementData(row, 0, id);

@@ -18,11 +18,17 @@ const demo = {
 
 let tilewall = demo.init();
 
-
 function setEvents() {
     $(demo.config.selectorContainer).children().click(function (event) {
-        let elementData = tilewall.getElementData(parseInt($(event.target).attr("data-tw-id")));
-        getDetailSite(elementData);
+        let elementId = parseInt($(event.target).attr("data-tw-id")),
+            elementData = tilewall.getElementData(elementId);
+
+        if($(event.target).hasClass("open")){
+            // close
+        } else {
+            $(event.target).addClass("open");
+            getDetailSite(elementData);
+        }
 
     });
 }
@@ -35,7 +41,7 @@ function getDetailSite(elementData) {
         // alert(data);
         $("body").append("<div class='tw-tmp'>" + data + "</div>");
         tilewall.insertCustomElementToSpecificMatrixPosition(elementData.position.row + 1, $(".tw-tmp").children());
-    })
+    });
 }
 
 if (!$("body").hasClass("alternative")) {
