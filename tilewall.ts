@@ -1,9 +1,7 @@
 ///<reference path="./typings/index.d.ts"/>
-
-import * as $ from "/node_modules/jquery/dist/jquery.js";
-import * as _ from "/node_modules/lodash/lodash.js";
+import * as $ from "jquery";
+import * as _ from "lodash";
 import * as Contracts from "tilewall.contracts";
-import at = require("lodash/at");
 
 export default class Tilewall {
     // region private variables
@@ -43,7 +41,7 @@ export default class Tilewall {
 
     // region constructor
     constructor(config: {}) {
-        this.data.config = _.defaults(config, this.data.config);
+        this.data.config = _.defaultsDeep(config, this.data.config);
 
         this.setDimensionsData();
         this.render();

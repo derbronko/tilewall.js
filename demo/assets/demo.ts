@@ -1,7 +1,7 @@
 ///<reference path="../../typings/index.d.ts"/>
 // import * as Tilewall from "../../tilewall.js";
-import Tilewall from "../../tilewall.js";
-import * as $ from "/node_modules/jquery/dist/jquery.js";
+import Tilewall from "tilewall";
+import * as $ from "jquery";
 import Contracts from "../../tilewall.contracts.js";
 
 
