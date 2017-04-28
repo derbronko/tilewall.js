@@ -1,10 +1,10 @@
 {
   "name": "tilewall.ts",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "A small plugin in TypeScript to organize tiles in different sizes on a wall",
   "main": "tilewall.ts",
   "scripts": {
-    "install dependencies": "rm -r node_modules || rm -r jspm_packages || npm install && jspm install && typings install",
+    "install dependencies": "rm -r node_modules || rm -r jspm_packages || npm install --only=dev && jspm install && typings install",
     "run tests": "echo \"Error: no test specified\" && exit 1",
     "start server": "gulp js && browser-sync start --config bs-config.js",
     "compile scss": "gulp scss",
@@ -43,7 +43,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
     "gulp-scss": "^1.4.0",
-    "gulp-sourcemaps": "^1.9.1",
+    "gulp-sourcemaps": "^2.6.0",
     "gulp-typescript": "^3.1.3",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
@@ -51,7 +51,7 @@
     "jshint": "^2.9.4",
     "jspm": "^0.16.53",
     "lite-server": "^2.2.2",
-    "systemjs": "^0.19.41",
+    "systemjs": "^0.20.12",
     "typescript": "^2.1.4",
     "typings": "^2.1.0"
   },
