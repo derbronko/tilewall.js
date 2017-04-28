@@ -5,15 +5,19 @@ tilewall.ts.iml
 # npm
 node_modules
 
+#jspm
+jspm_packages
+
 # gulp
 
 # generated sources
 demo/assets/*.js
-tilewall.js
 demo/assets/*.css
+tilewall.js
+tilewall.contracts.js
+tilewall.helper.js
 demo/definitions
 *.d.ts
 *.js.map
 npm-debug.log
-tilewall.contracts.js
 typings/**/*.json
