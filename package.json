@@ -6,7 +6,7 @@
   "scripts": {
     "install dependencies": "npm install --force && typings install",
     "run tests": "echo \"Error: no test specified\" && exit 1",
-    "start server": "browser-sync start --config bs-config.js",
+    "start server": "gulp js && browser-sync start --config bs-config.js",
     "compile scss": "gulp scss",
     "watch scss": "gulp 'watch scss'"
   },
@@ -47,10 +47,25 @@
     "gulp-wrapper": "^1.0.0",
     "jquery": "^3.1.1",
     "jshint": "^2.9.4",
+    "jspm": "^0.16.53",
     "lite-server": "^2.2.2",
     "lodash": "^4.17.4",
     "systemjs": "^0.19.41",
     "typescript": "^2.1.4",
     "typings": "^2.1.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "demo",
+      "packages": "jspm_packages"
+    },
+    "configFile": "config.js",
+    "dependencies": {
+      "jquery": "npm:jquery@^3.2.1",
+      "lodash": "npm:lodash@^4.17.4"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^2.0.7"
+    }
   }
 }

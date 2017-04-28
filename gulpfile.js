@@ -14,6 +14,13 @@ gulp.task('default', ["scss"], function () {
 
 });
 
+gulp.task('js', function (done) {
+    gulp.src(["tilewall.js", "tilewall.helper.js", "config.js"])
+        .pipe(gulp.dest("demo/assets"));
+
+    done();
+});
+
 gulp.task("scss", function(){
     log("Generate CSS files " + (new Date()).toString());
     gulp.src("demo/assets/*.scss")
