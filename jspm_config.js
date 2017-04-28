@@ -1,10 +1,10 @@
 System.config({
-  baseURL: "/demo/assets",
+  baseURL: "/",
   defaultJSExtensions: true,
   transpiler: "typescript",
   paths: {
-    "github:*": "../jspm_packages/github/*",
-    "npm:*": "../jspm_packages/npm/*"
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {

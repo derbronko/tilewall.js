@@ -4,7 +4,7 @@
   "description": "A small plugin in TypeScript to organize tiles in different sizes on a wall",
   "main": "tilewall.ts",
   "scripts": {
-    "install dependencies": "npm install --force && typings install",
+    "install dependencies": "rm -r node_modules || rm -r jspm_packages || npm install && jspm install && typings install",
     "run tests": "echo \"Error: no test specified\" && exit 1",
     "start server": "gulp js && browser-sync start --config bs-config.js",
     "compile scss": "gulp scss",
@@ -20,7 +20,11 @@
     "tiles",
     "matrix"
   ],
-  "author": "Christoph Brauckmann",
+  "author": {
+    "name": "Christoph Brauckmann",
+    "email": "dev@derbronko.de",
+    "url": "http://derbronko.de"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/derbronko/tilewall.ts/issues"
@@ -29,7 +33,6 @@
   "devDependencies": {
     "browsersync": "0.0.1-security",
     "del": "^2.2.2",
-    "grunt": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
@@ -45,21 +48,15 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
     "gulp-wrapper": "^1.0.0",
-    "jquery": "^3.1.1",
     "jshint": "^2.9.4",
     "jspm": "^0.16.53",
     "lite-server": "^2.2.2",
-    "lodash": "^4.17.4",
     "systemjs": "^0.19.41",
     "typescript": "^2.1.4",
     "typings": "^2.1.0"
   },
   "jspm": {
-    "directories": {
-      "baseURL": "demo",
-      "packages": "jspm_packages"
-    },
-    "configFile": "config.js",
+    "configFile": "jspm_config.js",
     "dependencies": {
       "jquery": "npm:jquery@^3.2.1",
       "lodash": "npm:lodash@^4.17.4"
@@ -67,5 +64,9 @@
     "devDependencies": {
       "typescript": "npm:typescript@^2.0.7"
     }
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4"
   }
 }
